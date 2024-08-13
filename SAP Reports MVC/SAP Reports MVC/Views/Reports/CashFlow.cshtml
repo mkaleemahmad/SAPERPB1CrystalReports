@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Cash Flow Report";
+}
+<div>
+
+    @using (Html.BeginForm("ShowReport", "Reports"))
+    {
+        <div style="margin:20px auto; text-align:center">
+
+            <h2>Selection criteria for Cash Flow Report</h2>
+
+            @Html.Hidden("rptNo", 1)
+        </div>
+
+        <hr />
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="controls">
+                            <label for="cashAccount" class="">Cash Account:</label>
+                            @Html.DropDownList("cashAccount", new SelectList(ViewBag.CashAccounts, "AcctCode", "DisplayValue", "A02060010002"), new { @data_live_search = "true"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <div class="controls">
+                            <label for="BPFrom">B.P. Account From:</label>
+                            @Html.DropDownList("BPFrom", new SelectList(ViewBag.BPs, "CardCode", "DisplayValue"), "-- Select B.P. From --", new { @data_live_search = "true"})
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group  form-inline">
+                        <div class="controls">
+                            <label for="BPTo">B.P. Account To: &nbsp;  &nbsp; </label>
+                            @Html.DropDownList("BPTo", new SelectList(ViewBag.BPs, "CardCode", "DisplayValue"), "-- Select B.P. To --", new { @data_live_search = "true"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <div class="controls">
+                            <label for="dateFrom" class="control-label">From Date:</label>
+                            <input id="dateFrom" name="dateFrom" type="date" class="form-control input-lg" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <div class="controls">
+                            <label for="dateTo" class="control-label">To Date:</label>
+                            <input id="dateTo" name="dateTo" type="date" class="form-control  input-lg" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12" style="text-align:center; margin: 50px auto;">
+                    <input type="submit" value="Show Report" formtarget="_blank" class="btn btn-primary btn-lg" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#BPTo').selectpicker();
+            $('#BPFrom').selectpicker();
+            $('#cashAccount').selectpicker();
+        });
+    </script>
+
+}

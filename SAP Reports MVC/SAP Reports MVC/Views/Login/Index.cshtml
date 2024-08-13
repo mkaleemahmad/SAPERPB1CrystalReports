@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+          <h2 style="text-align:center; margin: 50px auto; color:blue">Login Form - Al Meraj Bakers & Sweets</h2>
+        @using (Html.BeginForm("Index", "Login"))
+        { 
+        <div style="align-content:center; text-align:center; margin:10px auto; padding:100px; border:2px solid; width:300px; height:100px">
+            <div>Username: <input name="username" id="username" tabindex="0" autofocus /></div>
+            <br />
+            <div>Password: <input name="password" id="password" type="password" /></div>
+            <br />
+            <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />Remember me?<br />
+            <br />
+            <div><input type="submit" /></div>
+
+        </div>
+
+        }
+    </div>
+</body>
+</html>
